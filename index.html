@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+    <title>Clase 1</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <h1>{{bienvenida}}</h1>
+        <!--Card-->
+        <div class="card" style="width: 18rem;">
+            <img v-bind:src="carta.imagen" class="card-img-top" alt="...">
+            <!-- v-bind se simplifica con ":" ej <img :src"carta.imagen"-->
+            <div class="card-body">
+                <h5 class="card-title">{{carta.titulo}}</h5>
+                <p class="card-text">{{carta.descripcion}}</p>
+                <p class="card-text">numero: {{numero}}</p>
+                <a href="#" class="btn btn-primary" v-on:click="sumarUno">{{carta.boton1}}</a>
+                <a href="#" class="btn btn-primary" @click="restarUno">{{carta.boton2}}</a>
+                <!-- v-on abreviatura "@" ej @click=""-->
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous">
+    </script>
+    <!-- Vue cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- Codigo propio de vue -->
+    <script>
+        let app = new Vue({
+            el: '#app',
+            data: {
+                bienvenida: "Bienvenido a Vue 2 !!!",
+                carta: {
+                    imagen: "https://ichef.bbci.co.uk/news/640/cpsprodpb/1448F/production/_99478038_gettyimages-884140874.jpg",
+                    titulo: "Contador",
+                    descripcion: "Añada o quite de a 1 unidad",
+                    boton1: "+1",
+                    boton2: "-1"
+
+                },
+                numero: 0
+            },
+            methods: {
+                //funciones
+                sumarUno(){
+                    this.numero = this.numero + 1;
+                    return this.numero;
+                },
+                restarUno(){
+                    this.numero = this.numero - 1;
+                    return this.numero;
+                }
+
+            }
+        })
+    </script>
+
+</body>
+
+</html>
